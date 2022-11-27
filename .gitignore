@@ -1,6 +1,25 @@
 gcc-pico-compatible.folder/
 
 ocd-cfg.folder/
+.DS_STORE
+.idea
+.gdbinit
+
+asmf446/.idea
+asmf446/.DS_STORE
+asmf446/.gdbinit
+asmf446/*/CMakeLists.txt.user
+asmf446/.idea
+asmf446/*/CMakeCache.txt
+asmf446/*/CMakeFiles
+asmf446/*/CMakeScripts
+asmf446/*/Testing
+asmf446/*/Makefile
+asmf446/*/cmake_install.cmake
+asmf446/*/install_manifest.txt
+asmf446/*/compile_commands.json
+asmf446/*/CTestTestfile.cmake
+asmf446/*/_deps
 
 
 
