@@ -1,0 +1,257 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+RAM              0x0000000020000000 0x000000000001c000 xrw
+FLASH            0x0000000008000000 0x0000000000080000 xr
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD CMakeFiles/mybarebone.dir/ma.s.obj
+LOAD CMakeFiles/mybarebone.dir/head.s.obj
+LOAD CMakeFiles/mybarebone.dir/start.s.obj
+                0x0000000000000200                _min_heap_size = 0x200
+                0x0000000000000400                _min_stack_size = 0x400
+                0x000000002001c000                PROVIDE (_estack = (ORIGIN (RAM) + LENGTH (RAM)))
+
+.isr_vector     0x0000000008000000      0x1c4
+                0x0000000008000000                . = ALIGN (0x4)
+ *(.isr_vector)
+ .isr_vector    0x0000000008000000      0x1c4 CMakeFiles/mybarebone.dir/start.s.obj
+                0x0000000008000000                g_pfnVectors
+
+.text           0x00000000080001c4       0xac
+                0x00000000080001c4                . = ALIGN (0x4)
+ *(.text)
+ .text          0x00000000080001c4        0x0 CMakeFiles/mybarebone.dir/ma.s.obj
+ .text          0x00000000080001c4        0x0 CMakeFiles/mybarebone.dir/head.s.obj
+ .text          0x00000000080001c4       0x14 CMakeFiles/mybarebone.dir/start.s.obj
+ *(.text*)
+ .text._main    0x00000000080001d8       0x48 CMakeFiles/mybarebone.dir/ma.s.obj
+                0x00000000080001d8                _main
+ .text.reset_handler
+                0x0000000008000220       0x4c CMakeFiles/mybarebone.dir/start.s.obj
+                0x0000000008000220                reset_handler
+ .text.default_handler
+                0x000000000800026c        0x2 CMakeFiles/mybarebone.dir/start.s.obj
+                0x000000000800026c                RTC_Alarm_IRQHandler
+                0x000000000800026c                EXTI2_IRQHandler
+                0x000000000800026c                TIM8_CC_IRQHandler
+                0x000000000800026c                SPDIF_Rx_IRQHandler
+                0x000000000800026c                DebugMon_Handler
+                0x000000000800026c                SPI4_IRQHandler
+                0x000000000800026c                TIM1_CC_IRQHandler
+                0x000000000800026c                QuadSPI_IRQHandler
+                0x000000000800026c                DMA2_Stream5_IRQHandler
+                0x000000000800026c                DMA1_Stream5_IRQHandler
+                0x000000000800026c                SysTick_Handler
+                0x000000000800026c                PVD_IRQHandler
+                0x000000000800026c                SDIO_IRQHandler
+                0x000000000800026c                TAMP_STAMP_IRQHandler
+                0x000000000800026c                PendSV_Handler
+                0x000000000800026c                CAN2_RX1_IRQHandler
+                0x000000000800026c                EXTI3_IRQHandler
+                0x000000000800026c                TIM8_TRG_COM_TIM14_IRQHandler
+                0x000000000800026c                TIM1_UP_TIM10_IRQHandler
+                0x000000000800026c                FMPI2C1_error_IRQHandler
+                0x000000000800026c                TIM8_UP_TIM13_IRQHandler
+                0x000000000800026c                I2C3_ER_IRQHandler
+                0x000000000800026c                busfault_handler
+                0x000000000800026c                EXTI0_IRQHandler
+                0x000000000800026c                I2C2_EV_IRQHandler
+                0x000000000800026c                DMA1_Stream2_IRQHandler
+                0x000000000800026c                CAN1_RX0_IRQHandler
+                0x000000000800026c                FPU_IRQHandler
+                0x000000000800026c                OTG_HS_WKUP_IRQHandler
+                0x000000000800026c                CAN2_SCE_IRQHandler
+                0x000000000800026c                DMA2_Stream2_IRQHandler
+                0x000000000800026c                memmanage_handler
+                0x000000000800026c                SPI1_IRQHandler
+                0x000000000800026c                TIM6_DAC_IRQHandler
+                0x000000000800026c                TIM1_BRK_TIM9_IRQHandler
+                0x000000000800026c                DCMI_IRQHandler
+                0x000000000800026c                CAN2_RX0_IRQHandler
+                0x000000000800026c                DMA2_Stream3_IRQHandler
+                0x000000000800026c                FMPI2C1_IRQHandler
+                0x000000000800026c                default_handler
+                0x000000000800026c                SAI2_IRQHandler
+                0x000000000800026c                USART6_IRQHandler
+                0x000000000800026c                USART3_IRQHandler
+                0x000000000800026c                CAN1_RX1_IRQHandler
+                0x000000000800026c                UART5_IRQHandler
+                0x000000000800026c                DMA2_Stream0_IRQHandler
+                0x000000000800026c                TIM4_IRQHandler
+                0x000000000800026c                I2C1_EV_IRQHandler
+                0x000000000800026c                HDMI_CEC_IRQHandler
+                0x000000000800026c                DMA1_Stream6_IRQHandler
+                0x000000000800026c                DMA1_Stream1_IRQHandler
+                0x000000000800026c                UART4_IRQHandler
+                0x000000000800026c                TIM3_IRQHandler
+                0x000000000800026c                RCC_IRQHandler
+                0x000000000800026c                TIM8_BRK_TIM12_IRQHandler
+                0x000000000800026c                EXTI15_10_IRQHandler
+                0x000000000800026c                ADC_IRQHandler
+                0x000000000800026c                DMA1_Stream7_IRQHandler
+                0x000000000800026c                TIM7_IRQHandler
+                0x000000000800026c                CAN2_TX_IRQHandler
+                0x000000000800026c                TIM5_IRQHandler
+                0x000000000800026c                DMA2_Stream7_IRQHandler
+                0x000000000800026c                I2C3_EV_IRQHandler
+                0x000000000800026c                EXTI9_5_IRQHandler
+                0x000000000800026c                RTC_WKUP_IRQHandler
+                0x000000000800026c                SPI2_IRQHandler
+                0x000000000800026c                OTG_HS_EP1_IN_IRQHandler
+                0x000000000800026c                DMA1_Stream0_IRQHandler
+                0x000000000800026c                CAN1_TX_IRQHandler
+                0x000000000800026c                SVC_Handler
+                0x000000000800026c                EXTI4_IRQHandler
+                0x000000000800026c                usagefault_handler
+                0x000000000800026c                OTG_HS_EP1_OUT_IRQHandler
+                0x000000000800026c                WWDG_IRQHandler
+                0x000000000800026c                TIM2_IRQHandler
+                0x000000000800026c                OTG_FS_WKUP_IRQHandler
+                0x000000000800026c                TIM1_TRG_COM_TIM11_IRQHandler
+                0x000000000800026c                OTG_HS_IRQHandler
+                0x000000000800026c                hardfault_handler
+                0x000000000800026c                EXTI1_IRQHandler
+                0x000000000800026c                nmi_handler
+                0x000000000800026c                USART2_IRQHandler
+                0x000000000800026c                I2C2_ER_IRQHandler
+                0x000000000800026c                DMA2_Stream1_IRQHandler
+                0x000000000800026c                CAN1_SCE_IRQHandler
+                0x000000000800026c                FLASH_IRQHandler
+                0x000000000800026c                DMA2_Stream4_IRQHandler
+                0x000000000800026c                USART1_IRQHandler
+                0x000000000800026c                OTG_FS_IRQHandler
+                0x000000000800026c                SPI3_IRQHandler
+                0x000000000800026c                DMA1_Stream4_IRQHandler
+                0x000000000800026c                I2C1_ER_IRQHandler
+                0x000000000800026c                FMC_IRQHandler
+                0x000000000800026c                DMA2_Stream6_IRQHandler
+                0x000000000800026c                SAI1_IRQHandler
+                0x000000000800026c                DMA1_Stream3_IRQHandler
+                0x0000000008000270                . = ALIGN (0x4)
+ *fill*         0x000000000800026e        0x2 
+                0x0000000008000270                _etext = .
+
+.glue_7         0x0000000008000270        0x0
+ .glue_7        0x0000000008000270        0x0 linker stubs
+
+.glue_7t        0x0000000008000270        0x0
+ .glue_7t       0x0000000008000270        0x0 linker stubs
+
+.vfp11_veneer   0x0000000008000270        0x0
+ .vfp11_veneer  0x0000000008000270        0x0 linker stubs
+
+.v4_bx          0x0000000008000270        0x0
+ .v4_bx         0x0000000008000270        0x0 linker stubs
+
+.iplt           0x0000000008000270        0x0
+ .iplt          0x0000000008000270        0x0 CMakeFiles/mybarebone.dir/start.s.obj
+
+.rel.dyn        0x0000000008000270        0x0
+ .rel.iplt      0x0000000008000270        0x0 CMakeFiles/mybarebone.dir/start.s.obj
+
+.rodata         0x0000000008000270        0x0
+                0x0000000008000270                . = ALIGN (0x4)
+ *(.rodata)
+ *(.rodata*)
+                0x0000000008000270                . = ALIGN (0x4)
+                0x0000000008000270                _sidata = LOADADDR (.data)
+
+.data           0x0000000020000000        0x0 load address 0x0000000008000270
+                0x0000000020000000                . = ALIGN (0x4)
+                0x0000000020000000                _sdata = .
+ *(.data)
+ .data          0x0000000020000000        0x0 CMakeFiles/mybarebone.dir/ma.s.obj
+ .data          0x0000000020000000        0x0 CMakeFiles/mybarebone.dir/head.s.obj
+ .data          0x0000000020000000        0x0 CMakeFiles/mybarebone.dir/start.s.obj
+ *(.data*)
+                0x0000000020000000                . = ALIGN (0x4)
+                0x0000000020000000                _edata = .
+
+.igot.plt       0x0000000020000000        0x0 load address 0x0000000008000270
+ .igot.plt      0x0000000020000000        0x0 CMakeFiles/mybarebone.dir/start.s.obj
+
+.bss            0x0000000020000000        0x0 load address 0x0000000008000270
+                0x0000000020000000                . = ALIGN (0x4)
+                0x0000000020000000                _sbss = .
+                0x0000000020000000                __bss_start__ = _sbss
+ *(.bss)
+ .bss           0x0000000020000000        0x0 CMakeFiles/mybarebone.dir/ma.s.obj
+ .bss           0x0000000020000000        0x0 CMakeFiles/mybarebone.dir/head.s.obj
+ .bss           0x0000000020000000        0x0 CMakeFiles/mybarebone.dir/start.s.obj
+ *(.bss*)
+ *(COMMON)
+                0x0000000020000000                . = ALIGN (0x4)
+                0x0000000020000000                _ebss = .
+                0x0000000020000000                __bss_end__ = _ebss
+
+._user_heap_stack
+                0x0000000020000000      0x600 load address 0x0000000008000270
+                0x0000000020000000                . = ALIGN (0x8)
+                [!provide]                        PROVIDE (end = .)
+                [!provide]                        PROVIDE (_end = .)
+                0x0000000020000200                . = (. + _min_heap_size)
+ *fill*         0x0000000020000000      0x200 
+                0x0000000020000600                . = (. + _min_stack_size)
+ *fill*         0x0000000020000200      0x400 
+                0x0000000020000600                . = ALIGN (0x8)
+
+/DISCARD/
+ libc.a(*)
+ libm.a(*)
+ libgcc.a(*)
+
+.ARM.attributes
+                0x0000000000000000       0x25
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x0000000000000000       0x25 CMakeFiles/mybarebone.dir/ma.s.obj
+ .ARM.attributes
+                0x0000000000000025       0x25 CMakeFiles/mybarebone.dir/head.s.obj
+ .ARM.attributes
+                0x000000000000004a       0x25 CMakeFiles/mybarebone.dir/start.s.obj
+OUTPUT(mybarebone elf32-littlearm)
+LOAD linker stubs
+LOAD /opt/gccarm/bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/lib/libc.a
+LOAD /opt/gccarm/bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/lib/libm.a
+LOAD /opt/gccarm/bin/../lib/gcc/arm-none-eabi/11.3.1/libgcc.a
+
+.debug_line     0x0000000000000000       0xda
+ .debug_line    0x0000000000000000       0x61 CMakeFiles/mybarebone.dir/ma.s.obj
+ .debug_line    0x0000000000000061       0x79 CMakeFiles/mybarebone.dir/start.s.obj
+
+.debug_line_str
+                0x0000000000000000       0x4b
+ .debug_line_str
+                0x0000000000000000       0x43 CMakeFiles/mybarebone.dir/ma.s.obj
+                                         0x48 (size before relaxing)
+ .debug_line_str
+                0x0000000000000043        0x8 CMakeFiles/mybarebone.dir/start.s.obj
+                                         0x4e (size before relaxing)
+
+.debug_info     0x0000000000000000       0x47
+ .debug_info    0x0000000000000000       0x24 CMakeFiles/mybarebone.dir/ma.s.obj
+ .debug_info    0x0000000000000024       0x23 CMakeFiles/mybarebone.dir/start.s.obj
+
+.debug_abbrev   0x0000000000000000       0x26
+ .debug_abbrev  0x0000000000000000       0x14 CMakeFiles/mybarebone.dir/ma.s.obj
+ .debug_abbrev  0x0000000000000014       0x12 CMakeFiles/mybarebone.dir/start.s.obj
+
+.debug_aranges  0x0000000000000000       0x48
+ .debug_aranges
+                0x0000000000000000       0x20 CMakeFiles/mybarebone.dir/ma.s.obj
+ .debug_aranges
+                0x0000000000000020       0x28 CMakeFiles/mybarebone.dir/start.s.obj
+
+.debug_str      0x0000000000000000       0x74
+ .debug_str     0x0000000000000000       0x4f CMakeFiles/mybarebone.dir/ma.s.obj
+ .debug_str     0x000000000000004f       0x25 CMakeFiles/mybarebone.dir/start.s.obj
+                                         0x52 (size before relaxing)
+
+.debug_rnglists
+                0x0000000000000000       0x19
+ .debug_rnglists
+                0x0000000000000000       0x19 CMakeFiles/mybarebone.dir/start.s.obj

@@ -1,0 +1,5 @@
+clang -g -x assembler -O0 -fuse-ld=lld -nostartfiles -nodefaultlibs -nolibc -nostdlib -T stf446.ld -Wl,-Map=o1.map -mfpu=fpv4-sp-d16 -mthumb --target=arm-none-eabi -mtune=cortex-m4 -march=armv7e-m start.s ma.s -o fin01
+
+
+#### gcc command line option
+acc -x assembler -ggdb -Oz -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mtume=cortex-m4 -nostartfiles -nodefaultlibs -nolibc -nostdlib -T stf446.ld -Wl,-Map,m1.map 

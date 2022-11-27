@@ -1,0 +1,260 @@
+com port are serial port using for communication
+
+ftdi are usb to ttl, using rs232rl IC, which is an adapter.
+ftdi will need a driver to run adapter as a replacement for serial interface
+
+UART is an communication protocol which translate data between a computer's PARALLEL and SERIAL port. parellel data to serial and vice versa
+
+segger jlink is a usb power jtag simulation
+
+my usb-ttl adapter is FTDI FT232RL
+
+silab CP2102	usb to uart module
+48mhz internal clock
+
+- to communicate to host, we use debug software like openocd, stlink
+and a hardware bridge to translate signal from usb to ttl/uart or any serial commnunication
+
+- arm core has debug access port (dap) which exposes difference ways to connect
+to external access, like debugger
+
+-- cortex m4 
+	architecture  armv7e-m
+	thumb/thumb-2
+	8/16 bit simd arithmetic
+	fpu : single precision fpu
+**
+	
+	debug port ahb-ap interface
+	advanced high-performance bus access port (ahb-ap) for debug accesses
+
+-------------	COPY FROM STM32 CUBE IDE COMPILER ---------
+ ** gcc compiler option 
+	-mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32H755ZITx -DSTM32 -DSTM32H7DUAL -DSTM32H7 -DNUCLEO_H755ZI_Q -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb
+
+** gcc linker option
+	-mcpu=cortex-m4 -T"C:\Users\comic\stm32_space\h7001\CM4\STM32H755ZITX_FLASH.ld" -Wl,-Map="${BuildArtifactFileBaseName}.map" -Wl,--gc-sections -Wl,--verbose -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+
+** gcc assmbler option
+	-mcpu=cortex-m4 -g3 -DDEBUG -c -nostdinc -x assembler-with-cpp --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb
+	an external debug port component accesses this interface
+----------------	END SECTIONS ---------------
+
+** 
+	stm32 board, using boot0 pin as a way to upload application using uart
+
+=====*****
+.req rename register
+.byte .word allocate blocks of memory and specify initial content
+.hword reserves block of memory and specify initial content
+.space allocate a zeroed block of memory
+.quad allocate 8 byte blocks of memory
+
+arm syntax	gnu assembler syntax
+A:OR:B		A|B
+A:EOR:B		A^B	
+
+___
+	pre-index === value of base register will store new address, content will be store to this new address
+	post-index === content will be store to original address, then value of base register will be updated to new calculated value
+
+____
+	DCB or = : means allocate a byte in memory and store initial runtime value, when you see .= , it means from current address, allocate a byte of memory
+	DCD or & : means allocate a 4-bytes(words) of memory and store initial runtime value, .& , it means from current address, allocate a 4-bytes of memory
+
+=====
+	the opcS will enable these flags in psr or cpsr
+	The N flag : check for negative result
+	for exp. adds will update N bit in PSR, programming status register
+
+	The V flag : check for signed overflow
+	
+	The Z flag check for zero result
+
+	The C flag check if result greater than 2^32
+
+=====
+	stm32 h755zi
+	1 Mb of user flash memory block, 128Kb/sector
+	128 kb of system flash memory , where device can boot
+	2 kb of user option bytes for configuration
+
+=====
+.. cmp compare using add
+.. vmn compare using subtract
+.. tst test using logically ands, without affecting V flag
+.. teq test equivalence , using logicall ors, without affecting V flag
+.. mrs move to register, special register PSR
+.. msr move to special register, regular register
+
+====
+----- on a c based systems, ctr0(c runtime zero) is the boot code that initializes the RAM to the program correct memory map , before the main
+
+*	a typical bin/hex file will have all initialized value of data will be stored in the executable program file, and these data will be at the end of all the code in the program.
+   ,'''''''''''''''''''''|FILE_START
+   |_/Interrupt\Vectors\_|
+   | \_/ \_/ \_/ \_/ \_/ |
+   |_/REST OF/CODE \_/ \_|
+   | \INSTRUCTIONS_/ \_/ |
+   .......................
+   |'    ':..:'    ':..:'|
+   |. INITIAL:VALUES:'':.|
+   |':OF VARIABLES:IN   '|
+   |.:DATA SEGMENT:.    .|
+   L_____________________|FILE_END
+
+* here is an example of a linker script
+	MEMORY
+{
+  flash     (rx)   : ORIGIN = 0, LENGTH = 150K
+  ram       (rw!x) : ORIGIN = 0x800000, LENGTH = 32K
+}
+SECTIONS
+{
+  .text :
+  {
+    ./crt0.o(.text*)
+    *(.text*)
+    *(.strings)
+    *(._pm*)
+    *(.init)
+    *(.fini)
+     _etext = . ;
+    . = ALIGN(4);
+  }  > flash
+  .data   : AT (ADDR (.text) + SIZEOF (.text))
+  {
+    . = ALIGN(4);
+    __data = .;
+    *(.data)
+     *(.data*)
+     *(.rodata)
+    *(.rodata*)
+     _edata = . ;
+  }  > ram
+  . = ALIGN(4);
+  .bss  SIZEOF(.data) + ADDR(.data) :
+  {
+     _bss_start = . ;
+    *(.bss)
+    *(COMMON)
+     _end = . ;
+  }  > ram
+   __data_load_start = LOADADDR(.data);
+   __data_load_end = __data_load_start + SIZEOF(.data);
+
+*****	end of linker script example
+
+---*****
+	. when using jtag or swd , we need to know idcode of debug port of the arm chip
+	we have serial wire -debug port (sw-dp register) contains infomation about debug port on arm
+	IDCODE register provide a identification information about sw-dp, with cortex m3, m4 this idcode : 0x2ba01477
+	cortex m0+ , this idcode is 0x0bc11477
+
+
+_estack = 0x20001000 meaning -=- end of stack
+###     DEFINING THE MEMORY AREA IN LINKER SCRIPT
+MEMORY
+{
+    FLASH (rx)  : ORIGIN = 0x80000000, LENGTH = 32k
+    RAM (rxw) : ORIGIN = 0x200000000, LENGTH = 4K
+}
+
+####
+    This is the info about arm cpu architecture
+   MUST CHECK https://cryptopp.com/wiki/ARM_Embedded_(Bare_Metal)
+
+###
+clang options for cross compiling
+*********
+    ..... DEFINE TARGET TRIPLE, CPU, FPU, ABI
+    --target=arm-none-eabi
+    -march=armv7e-m == cortex-m4
+    -mtune=cortex-a53
+    -mfpu=fpv4-sp-d16
+    -mfloat-abi=hard
+    -mthumb
+
+    .... SPECIAL CARE, need to compile for stand alone running
+
+  ** compiler option
+    -ffreestanding === no standard/host definition/environment will be used
+
+  **    linker option
+    -nostdlib === (-nodefaultlibs -nostartfiles)
+    nodefaultlibs === will not use standard system libraries
+    -nostartfiles === will not use standard system startup file, HAVE TO GET YOUR OWN STARTUP FILES
+
+*********
+    .....FOR TOOLCHAIN,
+     you need to define sysroot , -I , -L 
+        -I === include path
+        -L === library path
+        -l === library name
+
+        ..Prefer using CMAKE localize variables
+        target_link_directories     instead of link_directories
+        target_include_directories  instead of include_directories
+###
+
+EXECUTABLE file will need startup.s and linker.ld
+
+### integrated assembler within llvm
+clang --target -integrated-as example.c 
+  this will be directly compiled to native object file without outputting assembly instructions to a file
+  and then parsing them back in order to encode them
+
+####
+  linker will merge all similar .* section together
+  locator will use linker script to put it correctly together in the final .o .elf files
+
+
+####
+  start address of code section in flash should be occupy by
+      --> vector table
+      --> .text
+      --> .rodata
+      --> .data
+      --> .bss
+
+  +++ start up file will copy data from flash into correct memory in SRAM
+  +++ start up code initialize stack pointer, PC , and call main() or entry functions
+      stack pointer will be at the end of unused, preserved memory or .bss section in SRAM
+
+#####
+  ahb advanced high performance bus : 1 clock cycle access to peripherals
+  apb advanced peripherals bus : 2 clock cycle access to peripherals
+
+#####
+  gpio enable process ---
+      enable the bus clock gpio connected to
+      set the mode of the port pin 
+      enabel the gpio via gpiox_en register
+      to set the pin high or low, we gonna use output or input data register
+
+####
+  load address of peripherals to register
+  load value of that peripherals to another register
+  modify value 
+  store new value back to peripherals
+
+##### ============
+# Post processing command to create a disassembly file 
+add_custom_command(TARGET ${TARGET}.elf POST_BUILD
+        COMMAND ${CMAKE_OBJDUMP} -S  ${TARGET}.elf > ${TARGET}.disasm
+        COMMENT "Invoking: Disassemble")
+
+# Post processing command to create a hex file 
+add_custom_command(TARGET ${TARGET}.elf POST_BUILD
+        COMMAND ${CMAKE_OBJCOPY} -O ihex  ${TARGET}.elf  ${TARGET}.hex
+        COMMENT "Invoking: Hexdump")
+
+# Pre-processing command to create disassembly for each source file
+foreach (SRC_MODULE test startup dummy)
+  add_custom_command(TARGET ${TARGET}.elf 
+                     PRE_LINK
+                     COMMAND ${CMAKE_OBJDUMP} -S CMakeFiles/${TARGET}.elf.dir/${SRC_MODULE}.c.obj > ${SRC_MODULE}.s
+                     COMMENT "Invoking: Disassemble ( CMakeFiles/${TARGET}.elf.dir/${SRC_MODULE}.c.obj)")
+endforeach()
+
+#### =========

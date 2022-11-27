@@ -1,0 +1,18 @@
+%progbits	: sections contains initialized data and instructions
+%nobits 	: sections has only zero-initialized data
+%init_array	: sections contains pointers to initialization functions
+%finit_array	: sections contains pointers to termination/end initialization functions
+%preinit_array	: sections contains pointers to pre-initialization functions
+
+##################################
+
+@ # ; comments in assembler file
+o----------------------------------
+ >>>>>>    for use of clang to compile C source file
+.. -isysroot specify directories for include files search
+.. --sysroot, -isysroot, -isystem  specify directory as logical root for headers and libraries
+.. -nostdinc -nostdinc++ do not search standard system directories for header files, only search the one specified by -isysroot, -I 
+***arm-none-eab-gcc -v -ggdb -mthumb -mfloat-abi=hard -mtune=cortex-m4 -march=armv7e-m -mfpu=fpv4-sp-d16 -nostdinc -nostdinc++ -fuse-ld=lld -nostartfiles -nodefaultlibs -nostdlib -nolibc -T script -Wl,-Map,map.map -ffreestanding 
+
+***kang -v -ggdb -fcolor-diagnostics -fshow-source-location -target arm-none-eabi -mthumb -mfloat-abi=hard -mtune=cortex-m4 -march=armv7e-m -mfpu=fpv4-sp-d16 -nostdinc -nostdinc++ -nostartfiles -nodefaultlibs -nostdlib -nostdlib++ -nolibc -fuse-ld=lld -ffreestanding -nobuiltininc   -T script -Wl,-Map,map.map  
+
