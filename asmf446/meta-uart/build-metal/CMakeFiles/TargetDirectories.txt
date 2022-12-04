@@ -1,0 +1,3 @@
+/media/psf/stm/asmf446/meta-uart/build-metal/CMakeFiles/meta-uart-obj.dir
+/media/psf/stm/asmf446/meta-uart/build-metal/CMakeFiles/edit_cache.dir
+/media/psf/stm/asmf446/meta-uart/build-metal/CMakeFiles/rebuild_cache.dir
