@@ -1,5 +1,0 @@
-# ninja log v5
-2	13	1669179158000000000	CMakeFiles/mybarebone.dir/ma.s.obj	d5769c1fc4d2c7df
-3	15	1669179158000000000	CMakeFiles/mybarebone.dir/head.s.obj	d0538b5053815979
-3	15	1669179158000000000	CMakeFiles/mybarebone.dir/start.s.obj	ff035cef808ad9da
-16	38	1669179158000000000	mybarebone	e5747de64515e798

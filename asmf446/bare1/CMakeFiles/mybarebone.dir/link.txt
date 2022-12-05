@@ -1,1 +1,0 @@
-/opt/gccarm/bin/arm-none-eabi-gcc  -nostartfiles -nodefaultlibs -nolibc -nostdlib -T /media/psf/stm/asmf446/bare1/stf446.ld -Wl,-Map,ohno.map CMakeFiles/mybarebone.dir/ma.s.obj CMakeFiles/mybarebone.dir/head.s.obj CMakeFiles/mybarebone.dir/start.s.obj -o mybarebone 

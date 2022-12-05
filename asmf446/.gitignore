@@ -4,18 +4,24 @@
 
 */*/.ninja_deps
 */*/.ninja_log
-*/*/build.ninja
+**/build.ninja
 
-*/*/*.map
+**/.idea
 
-*/*/CMakeCache.txt
-*/*/CMakeFiles
-*/*/CMakeScripts
-*/*/Testing
-*/*/Makefile
-*/*/cmake_install.cmake
+**/.ninja_deps
+**/.ninja_log
+**/build.ninja
 
-*/*/compile_commands.json
-*/*/CTestTestfile.cmake
-*/*/_deps
+**/*.map
+
+**/CMakeCache.txt
+**/CMakeFiles
+**/CMakeScripts
+**/Testing
+**/Makefile
+**/cmake_install.cmake
+
+**/compile_commands.json
+**/CTestTestfile.cmake
+**/_deps
 .DS_Store
