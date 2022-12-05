@@ -1,9 +1,0 @@
-# ninja log v5
-2	10	1670188068000000000	CMakeFiles/meta-uart-obj.dir/media/psf/stm/asmf446/start.s.obj	64e555e4b85cede9
-1	11	1670194156000000000	CMakeFiles/meta-uart-obj.dir/ma.s.obj	8ff64e51e9282440
-1	9	1670188068000000000	CMakeFiles/meta-uart-obj.dir/head.s.obj	2642318cc49858ce
-3	21	1670187602000000000	CMakeFiles/meta_uart.dir/media/psf/stm/asmf446/start.s.obj	3814d841ff6c1b12
-2	19	1670187602000000000	CMakeFiles/meta_uart.dir/head.s.obj	9cb4bc6385fe9472
-1	8	1670187976000000000	CMakeFiles/meta_uart.dir/ma.s.obj	949a67e4c8aef9d7
-0	21	1670195849000000000	meta-uart-obj	57f1633dc19a61bf
-9	73	1670187976000000000	meta_uart	b6153c06c579ba48

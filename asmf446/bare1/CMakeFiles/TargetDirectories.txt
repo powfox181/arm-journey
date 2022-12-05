@@ -1,0 +1,3 @@
+/media/psf/stm/asmf446/bare1/CMakeFiles/mybarebone.dir
+/media/psf/stm/asmf446/bare1/CMakeFiles/edit_cache.dir
+/media/psf/stm/asmf446/bare1/CMakeFiles/rebuild_cache.dir
