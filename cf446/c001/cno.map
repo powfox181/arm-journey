@@ -1,0 +1,180 @@
+     VMA      LMA     Size Align Out     In      Symbol
+       0        0        0     1 _min_heap_size = 0x200
+       0        0        0     1 _min_stack_size = 0x400
+       0        0        0     1 PROVIDE ( _estack = ORIGIN ( RAM ) + LENGTH ( RAM ) )
+ 8000000  8000000      1c4     1 .isr_vector
+ 8000000  8000000        0     1         . = ALIGN ( 4 )
+ 8000000  8000000      1c4     1         boost.o:(.isr_vector)
+ 8000000  8000000        0     1                 g_pfnVectors
+ 80001c4  80001c4       10     4 .ARM.exidx
+ 80001c4  80001c4       10     4         <internal>:(.ARM.exidx)
+ 80001d4  80001d4       7c     4 .text
+ 80001d4  80001d4        0     1         . = ALIGN ( 4 )
+ 80001d4  80001d4       14     4         boost.o:(.text)
+ 80001e8  80001e8       18     4         main.o:(.text)
+ 80001e8  80001e8        0     1                 $t.0
+ 80001e9  80001e9       18     1                 _start
+ 8000200  8000200       4c     4         boost.o:(.text.reset_handler)
+ 8000200  8000200        0     1                 $t.0
+ 8000201  8000201       32     1                 reset_handler
+ 800020e  800020e        0     1                 __copydatainit
+ 8000214  8000214        0     1                 __loopcopydatainit
+ 8000224  8000224        0     1                 __fillzerobss
+ 8000228  8000228        0     1                 __loopfillzerobss
+ 8000230  8000230        0     1                 __loopforever
+ 8000234  8000234        0     1                 $d.2
+ 800024c  800024c        2     1         boost.o:(.text.default_handler)
+ 800024c  800024c        0     1                 __infinite_loop
+ 800024c  800024c        0     1                 $t.1
+ 800024c  800024c        2     1                 default_handler
+ 800024d  800024d        2     1                 nmi_handler
+ 800024d  800024d        2     1                 hardfault_handler
+ 800024d  800024d        2     1                 memmanage_handler
+ 800024d  800024d        2     1                 busfault_handler
+ 800024d  800024d        2     1                 usagefault_handler
+ 800024d  800024d        2     1                 SVC_Handler
+ 800024d  800024d        2     1                 DebugMon_Handler
+ 800024d  800024d        2     1                 PendSV_Handler
+ 800024d  800024d        2     1                 SysTick_Handler
+ 800024d  800024d        2     1                 WWDG_IRQHandler
+ 800024d  800024d        2     1                 PVD_IRQHandler
+ 800024d  800024d        2     1                 TAMP_STAMP_IRQHandler
+ 800024d  800024d        2     1                 RTC_WKUP_IRQHandler
+ 800024d  800024d        2     1                 FLASH_IRQHandler
+ 800024d  800024d        2     1                 RCC_IRQHandler
+ 800024d  800024d        2     1                 EXTI0_IRQHandler
+ 800024d  800024d        2     1                 EXTI1_IRQHandler
+ 800024d  800024d        2     1                 EXTI2_IRQHandler
+ 800024d  800024d        2     1                 EXTI3_IRQHandler
+ 800024d  800024d        2     1                 EXTI4_IRQHandler
+ 800024d  800024d        2     1                 DMA1_Stream0_IRQHandler
+ 800024d  800024d        2     1                 DMA1_Stream1_IRQHandler
+ 800024d  800024d        2     1                 DMA1_Stream2_IRQHandler
+ 800024d  800024d        2     1                 DMA1_Stream3_IRQHandler
+ 800024d  800024d        2     1                 DMA1_Stream4_IRQHandler
+ 800024d  800024d        2     1                 DMA1_Stream5_IRQHandler
+ 800024d  800024d        2     1                 DMA1_Stream6_IRQHandler
+ 800024d  800024d        2     1                 ADC_IRQHandler
+ 800024d  800024d        2     1                 CAN1_TX_IRQHandler
+ 800024d  800024d        2     1                 CAN1_RX0_IRQHandler
+ 800024d  800024d        2     1                 CAN1_RX1_IRQHandler
+ 800024d  800024d        2     1                 CAN1_SCE_IRQHandler
+ 800024d  800024d        2     1                 EXTI9_5_IRQHandler
+ 800024d  800024d        2     1                 TIM1_BRK_TIM9_IRQHandler
+ 800024d  800024d        2     1                 TIM1_UP_TIM10_IRQHandler
+ 800024d  800024d        2     1                 TIM1_TRG_COM_TIM11_IRQHandler
+ 800024d  800024d        2     1                 TIM1_CC_IRQHandler
+ 800024d  800024d        2     1                 TIM2_IRQHandler
+ 800024d  800024d        2     1                 TIM3_IRQHandler
+ 800024d  800024d        2     1                 TIM4_IRQHandler
+ 800024d  800024d        2     1                 I2C1_EV_IRQHandler
+ 800024d  800024d        2     1                 I2C1_ER_IRQHandler
+ 800024d  800024d        2     1                 I2C2_EV_IRQHandler
+ 800024d  800024d        2     1                 I2C2_ER_IRQHandler
+ 800024d  800024d        2     1                 SPI1_IRQHandler
+ 800024d  800024d        2     1                 SPI2_IRQHandler
+ 800024d  800024d        2     1                 USART1_IRQHandler
+ 800024d  800024d        2     1                 USART2_IRQHandler
+ 800024d  800024d        2     1                 USART3_IRQHandler
+ 800024d  800024d        2     1                 EXTI15_10_IRQHandler
+ 800024d  800024d        2     1                 RTC_Alarm_IRQHandler
+ 800024d  800024d        2     1                 OTG_FS_WKUP_IRQHandler
+ 800024d  800024d        2     1                 TIM8_BRK_TIM12_IRQHandler
+ 800024d  800024d        2     1                 TIM8_UP_TIM13_IRQHandler
+ 800024d  800024d        2     1                 TIM8_TRG_COM_TIM14_IRQHandler
+ 800024d  800024d        2     1                 TIM8_CC_IRQHandler
+ 800024d  800024d        2     1                 DMA1_Stream7_IRQHandler
+ 800024d  800024d        2     1                 FMC_IRQHandler
+ 800024d  800024d        2     1                 SDIO_IRQHandler
+ 800024d  800024d        2     1                 TIM5_IRQHandler
+ 800024d  800024d        2     1                 SPI3_IRQHandler
+ 800024d  800024d        2     1                 UART4_IRQHandler
+ 800024d  800024d        2     1                 UART5_IRQHandler
+ 800024d  800024d        2     1                 TIM6_DAC_IRQHandler
+ 800024d  800024d        2     1                 TIM7_IRQHandler
+ 800024d  800024d        2     1                 DMA2_Stream0_IRQHandler
+ 800024d  800024d        2     1                 DMA2_Stream1_IRQHandler
+ 800024d  800024d        2     1                 DMA2_Stream2_IRQHandler
+ 800024d  800024d        2     1                 DMA2_Stream3_IRQHandler
+ 800024d  800024d        2     1                 DMA2_Stream4_IRQHandler
+ 800024d  800024d        2     1                 CAN2_TX_IRQHandler
+ 800024d  800024d        2     1                 CAN2_RX0_IRQHandler
+ 800024d  800024d        2     1                 CAN2_RX1_IRQHandler
+ 800024d  800024d        2     1                 CAN2_SCE_IRQHandler
+ 800024d  800024d        2     1                 OTG_FS_IRQHandler
+ 800024d  800024d        2     1                 DMA2_Stream5_IRQHandler
+ 800024d  800024d        2     1                 DMA2_Stream6_IRQHandler
+ 800024d  800024d        2     1                 DMA2_Stream7_IRQHandler
+ 800024d  800024d        2     1                 USART6_IRQHandler
+ 800024d  800024d        2     1                 I2C3_EV_IRQHandler
+ 800024d  800024d        2     1                 I2C3_ER_IRQHandler
+ 800024d  800024d        2     1                 OTG_HS_EP1_OUT_IRQHandler
+ 800024d  800024d        2     1                 OTG_HS_EP1_IN_IRQHandler
+ 800024d  800024d        2     1                 OTG_HS_WKUP_IRQHandler
+ 800024d  800024d        2     1                 OTG_HS_IRQHandler
+ 800024d  800024d        2     1                 DCMI_IRQHandler
+ 800024d  800024d        2     1                 FPU_IRQHandler
+ 800024d  800024d        2     1                 SPI4_IRQHandler
+ 800024d  800024d        2     1                 SAI1_IRQHandler
+ 800024d  800024d        2     1                 SAI2_IRQHandler
+ 800024d  800024d        2     1                 QuadSPI_IRQHandler
+ 800024d  800024d        2     1                 HDMI_CEC_IRQHandler
+ 800024d  800024d        2     1                 SPDIF_Rx_IRQHandler
+ 800024d  800024d        2     1                 FMPI2C1_IRQHandler
+ 800024d  800024d        2     1                 FMPI2C1_error_IRQHandler
+ 800024e  800024e        2     1         . = ALIGN ( 4 )
+ 8000250  8000250        0     1         _etext = .
+ 8000250  8000250        0     1 .rodata
+ 8000250  8000250        0     1         . = ALIGN ( 4 )
+ 8000250  8000250        0     1         . = ALIGN ( 4 )
+ 8000250  8000250        0     1 _sidata = LOADADDR ( .data )
+20000000 20000000        0     1 .data
+20000000 20000000        0     1         . = ALIGN ( 4 )
+20000000 20000000        0     1         _sdata = .
+20000000 20000000        0     1         . = ALIGN ( 4 )
+20000000 20000000        0     1         _edata = .
+20000000  8000250        0     1 .bss
+20000000  8000250        0     1         . = ALIGN ( 4 )
+20000000  8000250        0     1         _sbss = .
+20000000  8000250        0     1         __bss_start__ = _sbss
+20000000  8000250        0     1         . = ALIGN ( 4 )
+20000000  8000250        0     1         _ebss = .
+20000000  8000250        0     1         __bss_end__ = _ebss
+20000000  8000250      600     1 ._user_heap_stack
+20000000  8000250        0     1         . = ALIGN ( 8 )
+20000000  8000250      200     1         . = . + _min_heap_size
+20000200  8000450      400     1         . = . + _min_stack_size
+20000600  8000850        0     1         . = ALIGN ( 8 )
+       0        0       2b     1 .ARM.attributes
+       0        0       2b     1         boost.o:(.ARM.attributes)
+       0        0      197     1 .debug_info
+       0        0      13e     1         boost.o:(.debug_info)
+     13e      13e       59     1         main.o:(.debug_info)
+       0        0       66     1 .debug_abbrev
+       0        0       1f     1         boost.o:(.debug_abbrev)
+      1f       1f       47     1         main.o:(.debug_abbrev)
+       0        0       28     1 .debug_aranges
+       0        0       28     1         boost.o:(.debug_aranges)
+       0        0       19     1 .debug_rnglists
+       0        0       19     1         boost.o:(.debug_rnglists)
+       0        0       e4     1 .debug_line
+       0        0       7c     1         boost.o:(.debug_line)
+      7c       7c       68     1         main.o:(.debug_line)
+       0        0       2f     1 .debug_line_str
+       0        0       2f     1         <internal>:(.debug_line_str)
+       0        0       28     1 .debug_str_offsets
+       0        0       28     1         main.o:(.debug_str_offsets)
+       0        0       53     1 .debug_str
+       0        0       53     1         <internal>:(.debug_str)
+       0        0        c     1 .debug_addr
+       0        0        c     1         main.o:(.debug_addr)
+       0        0       3b     1 .comment
+       0        0       3b     1         <internal>:(.comment)
+       0        0       28     4 .debug_frame
+       0        0       28     4         main.o:(.debug_frame)
+       0        0      7b0     4 .symtab
+       0        0      7b0     4         <internal>:(.symtab)
+       0        0      102     1 .shstrtab
+       0        0      102     1         <internal>:(.shstrtab)
+       0        0      86c     1 .strtab
+       0        0      86c     1         <internal>:(.strtab)
